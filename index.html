@@ -368,17 +368,17 @@
         // Licznik odwiedzin (symulacja local storage)
         const updateVisitorCount = () => {
             const counterElement = document.getElementById('visitor-count');
-            let count = localStorage.getItem('page_visits');
+            // Zmieniam klucz, aby wymusić reset licznika u użytkownika
+            let count = localStorage.getItem('page_visits_v2');
 
             if (!count) {
-                // Ustawienie początkowej liczby odwiedzin (np. 1420 dla realizmu)
-                count = 1420; 
+                count = 0; // Start od zera (przy odświeżeniu skoczy na 1, jeśli zmienimy logikę, lub pozostanie 0 przy pierwszym)
+                // W tym przypadku przy pierwszym wejściu pokazuje 0.
             } else {
-                // Inkrementacja
                 count = parseInt(count) + 1;
             }
 
-            localStorage.setItem('page_visits', count);
+            localStorage.setItem('page_visits_v2', count);
             counterElement.innerText = count.toLocaleString('pl-PL');
         };
 
