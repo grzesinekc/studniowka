@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studniówka 2027</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Ikony (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Fonty Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Efekt srebrnego tekstu */
+        .silver-text {
+            background: linear-gradient(to bottom, #ffffff 0%, #a1a1a1 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Srebrne ramki i akcenty */
+        .silver-border {
+            border: 1px solid rgba(192, 192, 192, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .silver-border:hover {
+            border-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(192, 192, 192, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Animacja licznika */
+        .countdown-item {
+            min-width: 80px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-black selection:bg-gray-700 selection:text-white">
+
+    <!-- Dekoracyjne tło (subtelne światła) -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white opacity-[0.03] blur-[100px] rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-gray-400 opacity-[0.05] blur-[100px] rounded-full"></div>
+    </div>
+
+    <!-- Główny Nagłówek i Data -->
+    <header class="w-full pt-16 pb-12 px-4 text-center flex flex-col items-center justify-center">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider mb-4 silver-text uppercase">
+            Studniówka 2027
+        </h1>
+        
+        <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-xl md:text-2xl text-gray-300 font-light tracking-widest mt-2">
+            <div class="flex items-center gap-2">
+                <i class="ph ph-calendar-check text-2xl"></i>
+                <span>15 STYCZNIA 2027</span>
+            </div>
+            <div class="hidden md:block w-1 h-1 bg-gray-500 rounded-full"></div>
+            <div class="flex items-center gap-2">
+                <i class="ph ph-clock text-2xl"></i>
+                <span>GODZ. 19:00</span>
+            </div>
+        </div>
+
+        <!-- Licznik -->
+        <div class="mt-12 w-full max-w-4xl mx-auto">
+            <p class="text-gray-500 uppercase tracking-[0.2em] text-sm mb-6">Do balu pozostało</p>
+            <div id="countdown" class="flex flex-wrap justify-center gap-4 md:gap-8">
+                <!-- Dni -->
+                <div class="countdown-item flex flex-col items-center p-4 glass-panel silver-border rounded-lg">
+                    <span id="days" class="text-3xl md:text-5xl font-bold font-playfair text-white">00</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wider mt-2">Dni</span>
+                </div>
+                <!-- Godziny -->
+                <div class="countdown-item flex flex-col items-center p-4 glass-panel silver-border rounded-lg">
+                    <span id="hours" class="text-3xl md:text-5xl font-bold font-playfair text-white">00</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wider mt-2">Godzin</span>
+                </div>
+                <!-- Minuty -->
+                <div class="countdown-item flex flex-col items-center p-4 glass-panel silver-border rounded-lg">
+                    <span id="minutes" class="text-3xl md:text-5xl font-bold font-playfair text-white">00</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wider mt-2">Minut</span>
+                </div>
+                <!-- Sekundy -->
+                <div class="countdown-item flex flex-col items-center p-4 glass-panel silver-border rounded-lg">
+                    <span id="seconds" class="text-3xl md:text-5xl font-bold font-playfair text-white">00</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wider mt-2">Sekund</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sekcja z Kartami Informacyjnymi -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Karta: MIEJSCE -->
+            <div class="glass-panel silver-border p-8 rounded-xl relative group">
+                <div class="absolute top-4 right-4 text-gray-600 group-hover:text-white transition-colors">
+                    <i class="ph ph-map-pin text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-200 mb-4 tracking-wide">MIEJSCE</h3>
+                <div class="w-12 h-0.5 bg-gray-600 mb-4 group-hover:bg-white transition-colors"></div>
+                
+                <div class="space-y-3">
+                    <p class="text-white text-lg font-semibold tracking-wide">HOTEL PORTO</p>
+                    <p class="text-gray-400 text-sm">
+                        97-500 Radomsko<br>
+                        ul. Portowa 14-20
+                    </p>
+                    <div class="pt-2 border-t border-gray-800">
+                         <a href="tel:+48533853946" class="text-gray-300 hover:text-white text-sm flex items-center gap-2 transition-colors">
+                            <i class="ph ph-phone"></i> +48 533 853 946
+                        </a>
+                    </div>
+                </div>
+                <span class="inline-block mt-6 text-xs text-green-400 border border-green-900 bg-green-900/20 px-2 py-1 rounded">Zarezerwowane</span>
+            </div>
+
+            <!-- Karta: DJ / MUZYKA -->
+            <div class="glass-panel silver-border p-8 rounded-xl relative group">
+                <div class="absolute top-4 right-4 text-gray-600 group-hover:text-white transition-colors">
+                    <i class="ph ph-speaker-high text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-200 mb-4 tracking-wide">DJ & MUZYKA</h3>
+                <div class="w-12 h-0.5 bg-gray-600 mb-4 group-hover:bg-white transition-colors"></div>
+                <p class="text-gray-400 leading-relaxed text-sm">
+                    Oprawa muzyczna i prowadzenie imprezy. Lista proponowanych DJ-ów w przygotowaniu.
+                </p>
+                 <span class="inline-block mt-6 text-xs text-gray-500 border border-gray-700 px-2 py-1 rounded">W trakcie wyboru</span>
+            </div>
+
+            <!-- Karta: FILM & FOTO -->
+            <div class="glass-panel silver-border p-8 rounded-xl relative group">
+                <div class="absolute top-4 right-4 text-gray-600 group-hover:text-white transition-colors">
+                    <i class="ph ph-camera text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-200 mb-4 tracking-wide">FILM & FOTO</h3>
+                <div class="w-12 h-0.5 bg-gray-600 mb-4 group-hover:bg-white transition-colors"></div>
+                <p class="text-gray-400 leading-relaxed text-sm">
+                    Oferty fotografów i kamerzystów. Pamiątka z najważniejszej nocy.
+                </p>
+                 <span class="inline-block mt-6 text-xs text-gray-500 border border-gray-700 px-2 py-1 rounded">Zbieranie ofert</span>
+            </div>
+
+            <!-- Karta: UMOWY -->
+            <div class="glass-panel silver-border p-8 rounded-xl relative group">
+                <div class="absolute top-4 right-4 text-gray-600 group-hover:text-white transition-colors">
+                    <i class="ph ph-file-text text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-200 mb-4 tracking-wide">UMOWY</h3>
+                <div class="w-12 h-0.5 bg-gray-600 mb-4 group-hover:bg-white transition-colors"></div>
+                <p class="text-gray-400 leading-relaxed text-sm">
+                    Drafty umów, regulamin studniówki oraz zgody dla osób towarzyszących.
+                </p>
+                 <span class="inline-block mt-6 text-xs text-gray-500 border border-gray-700 px-2 py-1 rounded">Dokumentacja</span>
+            </div>
+
+            <!-- Karta: KOSZT -->
+            <div class="glass-panel silver-border p-8 rounded-xl relative group">
+                <div class="absolute top-4 right-4 text-gray-600 group-hover:text-white transition-colors">
+                    <i class="ph ph-currency-pln text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-200 mb-4 tracking-wide">KOSZT</h3>
+                <div class="w-12 h-0.5 bg-gray-600 mb-4 group-hover:bg-white transition-colors"></div>
+                <p class="text-gray-400 leading-relaxed text-sm">
+                    Szacowany kosztorys na osobę i parę. Harmonogram wpłat ratalnych.
+                </p>
+                 <span class="inline-block mt-6 text-xs text-gray-500 border border-gray-700 px-2 py-1 rounded">Kalkulacja</span>
+            </div>
+
+             <!-- Karta: RÓŻNE -->
+             <div class="glass-panel silver-border p-8 rounded-xl relative group">
+                <div class="absolute top-4 right-4 text-gray-600 group-hover:text-white transition-colors">
+                    <i class="ph ph-dots-three-circle text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-200 mb-4 tracking-wide">RÓŻNE</h3>
+                <div class="w-12 h-0.5 bg-gray-600 mb-4 group-hover:bg-white transition-colors"></div>
+                <p class="text-gray-400 leading-relaxed text-sm">
+                    Menu, dekoracje, transport, czerwone podwiązki i inne sprawy organizacyjne.
+                </p>
+                 <span class="inline-block mt-6 text-xs text-gray-500 border border-gray-700 px-2 py-1 rounded">Organizacyjne</span>
+            </div>
+
+            <!-- Karta: KONTAKT (Szeroka) -->
+            <div class="glass-panel silver-border p-8 rounded-xl relative group md:col-span-2 lg:col-span-3">
+                <div class="absolute top-4 right-4 text-gray-600 group-hover:text-white transition-colors">
+                    <i class="ph ph-users-three text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-200 mb-4 tracking-wide">KONTAKT Z KOMITETEM</h3>
+                <div class="w-12 h-0.5 bg-gray-600 mb-4 group-hover:bg-white transition-colors"></div>
+                <div class="grid md:grid-cols-2 gap-4 text-gray-400 text-sm">
+                    <div>
+                        <p class="mb-2"><strong class="text-white">Przewodniczący:</strong> Jan Kowalski (3A)</p>
+                        <p class="mb-2"><strong class="text-white">Email:</strong> komitet2027@szkola.pl</p>
+                    </div>
+                    <div>
+                        <p class="mb-2"><strong class="text-white">Spotkania:</strong> W każdy piątek, sala 12</p>
+                        <p class="mb-2"><strong class="text-white">Media:</strong> @studniowka2027_official</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Stopka -->
+    <footer class="w-full text-center py-8 border-t border-gray-900 mt-8">
+        <p class="text-gray-600 text-xs tracking-widest uppercase">
+            &copy; 2027 Komitet Studniówkowy. Wszystkie prawa zastrzeżone.
+        </p>
+    </footer>
+
+    <script>
+        // Logika Licznika
+        const countdown = () => {
+            // Data docelowa: 15 Stycznia 2027, godzina 19:00
+            const countDate = new Date('January 15, 2027 19:00:00').getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            // Jak działa czas
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            // Obliczanie
+            const textDay = Math.floor(gap / day);
+            const textHour = Math.floor((gap % day) / hour);
+            const textMinute = Math.floor((gap % hour) / minute);
+            const textSecond = Math.floor((gap % minute) / second);
+
+            // Aktualizacja HTML
+            // Sprawdzenie czy data nie minęła
+            if (gap > 0) {
+                document.getElementById('days').innerText = textDay;
+                document.getElementById('hours').innerText = textHour < 10 ? '0' + textHour : textHour;
+                document.getElementById('minutes').innerText = textMinute < 10 ? '0' + textMinute : textMinute;
+                document.getElementById('seconds').innerText = textSecond < 10 ? '0' + textSecond : textSecond;
+            } else {
+                document.getElementById('countdown').innerHTML = '<div class="text-3xl font-bold text-white tracking-widest">ZACZYNAMY!</div>';
+            }
+        };
+
+        // Uruchomienie interwału co sekundę
+        setInterval(countdown, 1000);
+        // Pierwsze wywołanie
+        countdown();
+    </script>
+</body>
+</html>
