@@ -54,6 +54,22 @@
         .countdown-item {
             min-width: 80px;
         }
+
+        /* Custom Scrollbar dla sekcji Koszt */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen bg-black selection:bg-gray-700 selection:text-white">
@@ -213,10 +229,56 @@
                 </div>
                 <h3 class="text-2xl font-bold text-gray-200 mb-4 tracking-wide">KOSZT</h3>
                 <div class="w-12 h-0.5 bg-gray-600 mb-4 group-hover:bg-white transition-colors"></div>
-                <p class="text-gray-400 leading-relaxed text-sm">
-                    Szacowany kosztorys na osobę i parę. Harmonogram wpłat ratalnych.
-                </p>
-                 <span class="inline-block mt-6 text-xs text-gray-500 border border-gray-700 px-2 py-1 rounded">Kalkulacja</span>
+                
+                <!-- Przewijana zawartość -->
+                <div class="max-h-64 overflow-y-auto pr-2 custom-scrollbar space-y-4">
+                    
+                    <!-- Sekcja Organizacyjna -->
+                    <div>
+                        <h4 class="text-white font-bold text-sm mb-2">Ustalenia organizacyjne:</h4>
+                        <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 ml-1">
+                            <li>Oprawa muzyczna: <span class="text-gray-300">DJ Froncu</span></li>
+                            <li>Fotografia i video: <span class="text-gray-300">Firma Bezulsky</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Dodatkowe koszty -->
+                    <div>
+                        <h4 class="text-white font-bold text-sm mb-2">Dodatkowe koszty obejmują:</h4>
+                        <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 ml-1">
+                            <li>ściankę fotograficzną</li>
+                            <li>obsługę medyczną</li>
+                            <li>firmę ochroniarską</li>
+                            <li>naukę tańca Poloneza</li>
+                            <li>upominki</li>
+                            <li>zaproszenia i winietki</li>
+                            <li>napoje gazowane oraz inne drobne wydatki</li>
+                        </ul>
+                    </div>
+
+                    <!-- Koszty w PLN -->
+                    <div>
+                        <h4 class="text-white font-bold text-sm mb-2 border-b border-gray-700 pb-1">Koszty:</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between items-center bg-gray-900/30 p-2 rounded"><span class="text-gray-400">Uczeń (maturzysta):</span> <span class="text-white font-bold">500 zł</span></li>
+                            <li class="flex justify-between items-center bg-gray-900/30 p-2 rounded"><span class="text-gray-400">Osoba towarzysząca:</span> <span class="text-white font-bold">270 zł</span></li>
+                        </ul>
+                        <p class="text-xs text-gray-500 mt-2 italic">Wszystkie umowy z usługodawcami zostaną podpisane w bieżącym tygodniu.</p>
+                    </div>
+
+                    <!-- Sekcja Zaliczki -->
+                    <div class="bg-gray-800/50 p-3 rounded border border-gray-700">
+                        <h4 class="text-green-400 font-bold text-sm mb-2">Zaliczka:</h4>
+                        <p class="text-gray-300 text-sm mb-3">Prosimy o wpłatę zaliczki w wysokości <span class="text-white font-bold">100 zł</span> do 30 stycznia na numer konta:</p>
+                        <p class="text-white font-mono text-sm bg-black/40 p-2 rounded text-center select-all border border-gray-600">52 1160 2202 0000 0005 9738 5426</p>
+                        <p class="text-gray-400 text-xs mt-2 font-light">W tytule przelewu prosimy wpisać: <span class="text-gray-300">imię i nazwisko ucznia oraz klasa</span>.</p>
+                        <div class="mt-2 pt-2 border-t border-gray-700">
+                            <p class="text-gray-500 text-[10px] leading-tight">Wpłata zaliczki jest niezbędna, aby umowy mogły zostać zrealizowane zgodnie z ustaleniami.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                 <span class="inline-block mt-4 text-xs text-gray-500 border border-gray-700 px-2 py-1 rounded">Kalkulacja</span>
             </div>
 
              <!-- Karta: RÓŻNE -->
