@@ -325,8 +325,11 @@
 
     <!-- Stopka -->
     <footer class="w-full text-center py-8 border-t border-gray-900 mt-8">
-        <p class="text-gray-600 text-xs tracking-widest uppercase">
+        <p class="text-gray-600 text-xs tracking-widest uppercase mb-2">
             &copy; 2027 Komitet Studniówkowy. Wszystkie prawa zastrzeżone.
+        </p>
+        <p class="text-gray-700 text-[10px] tracking-wider">
+            Odwiedzin: <span id="visitor-count" class="font-mono text-gray-500">...</span>
         </p>
     </footer>
 
@@ -362,9 +365,26 @@
             }
         };
 
-        // Uruchomienie interwału co sekundę
+        // Licznik odwiedzin (symulacja local storage)
+        const updateVisitorCount = () => {
+            const counterElement = document.getElementById('visitor-count');
+            let count = localStorage.getItem('page_visits');
+
+            if (!count) {
+                // Ustawienie początkowej liczby odwiedzin (np. 1420 dla realizmu)
+                count = 1420; 
+            } else {
+                // Inkrementacja
+                count = parseInt(count) + 1;
+            }
+
+            localStorage.setItem('page_visits', count);
+            counterElement.innerText = count.toLocaleString('pl-PL');
+        };
+
+        // Uruchomienie funkcji
+        updateVisitorCount();
         setInterval(countdown, 1000);
-        // Pierwsze wywołanie
         countdown();
     </script>
 </body>
